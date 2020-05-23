@@ -8,8 +8,6 @@ import ConfirmationPage from "./components/pages/ConfirmationPage";
 import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
 import ValidateTokenPage from "./components/pages/ValidateTokenPage";
 import ResetPasswordPage from "./components/pages/ResetPasswordPage";
-// import TopNavigation from "./components/navigation/TopNavigation";
-// import HomeNavigation from "./components/navigation/HomeNavigation";
 import UserRoute from "./components/routes/UserRoute";
 import GuestRoute from "./components/routes/GuestRoute";
 import { connect } from "react-redux";

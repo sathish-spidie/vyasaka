@@ -29,26 +29,36 @@ const navMenu = {
 	listStyle: "none",
 };
 
-const NavBar = ({ isAuthenticated, user }) => {
+	const Mybutton = styled.button`
+        background: transparent;
+        color: #1172c4;
+        font-size: 14px;
+        border-color: #1172c4;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 22px;
+        padding: 10px 40px;
+        transition: all 0.2s linear;
+
+    &:before {
+    content: "";
+		width: 40px;
+		height: 40px;
+		background:  ${props => props.avatar ? `url("${props.avatar}") no-repeat 50% 50%` : ""};
+		display: inline-block;
+		position: absolute;
+		top:0;
+		left: -50px;
+		background-size: cover;
+		border-radius: 50%;
+  }
+`;
+
+const NavBar = ({ isAuthenticated, user, logout }) => {
 	let avatar;
 	if (isAuthenticated) {
 		avatar = gravatarUrl(user.email, { default: "retro" });
 	}
-	const Mybutton = styled.button`
-    &:before {
-    content: "";
-		width: 25px;
-		background: url("${avatar}") no-repeat 50% 50%;
-		display: inline-block;
-		position: absolute;
-		top:0;
-		left: -35px;
-		height: 25px;
-		background-size: cover;
-		border-radius: 50%;
-
-  }
-`;
 	return (
 		<>
 			<div style={navbar} className="navbar">
@@ -59,15 +69,13 @@ const NavBar = ({ isAuthenticated, user }) => {
 					<li style={{ position: "relative" }}>
 						{isAuthenticated ? (
 							<>
-								<button onClick={logout}>Logout</button>
+								<Mybutton avatar={avatar} onClick={() => logout()}>Logout</Mybutton>
 							</>
 						) : (
 							<Link to="/login">Login</Link>
 						)}
 					</li>
-					<li>
-						{!isAuthenticated && <Link to="/signup">Register</Link>}
-					</li>
+					<li>{!isAuthenticated && <Link to="/signup">Register</Link>}</li>
 					<li>
 						<Link to="/dashboard">Dashboard</Link>
 					</li>
