@@ -22,8 +22,8 @@ const NavMenu = styled.ul`
 	align-items: center;
 	list-style: none;
 
-	li{
-		margin : 0 1em;
+	li {
+		margin: 0 1em;
 	}
 `;
 
@@ -77,9 +77,7 @@ const NavBar = ({ isAuthenticated, user, logout }) => {
 						)}
 					</li>
 					<li>{!isAuthenticated && <Link to="/signup">Register</Link>}</li>
-					<li>
-						<Link to="/dashboard">Dashboard</Link>
-					</li>
+					<li>{isAuthenticated && <Link to="/dashboard">Dashboard</Link>}</li>
 				</NavMenu>
 			</MyNavBar>
 		</>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ConfirmEmailMessage from "../messages/ConfirmEmailMessage";
 import styled from "styled-components";
+import { MainWrapper } from "../pages/Homepage.js";
 
 export const Wrapper = styled.div`
 	position: absolute;
@@ -13,10 +14,10 @@ export const Wrapper = styled.div`
 
 const DashboardPage = ({ isConfirmed }) => {
 	return (
-		<Wrapper>
+		<MainWrapper>
 			<h1>DashboardPage</h1>
 			{!isConfirmed && <ConfirmEmailMessage />}
-		</Wrapper>
+		</MainWrapper>
 	);
 };
 

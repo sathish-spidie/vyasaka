@@ -1,20 +1,20 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
-const Wrapper=styled.div`
+export const MainWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	position: absolute;
 	width: 80vw;
 	top: 10vh;
-`
+`;
 const Homepage = () => {
-  return (
-    <Wrapper>
-      <h1>Welcome to Vyasaka</h1>
-    </Wrapper>
-  );
+	return (
+		<MainWrapper>
+			<h1>Welcome to Vyasaka</h1>
+		</MainWrapper>
+	);
 };
 
-export default Homepage
+export default Homepage;
