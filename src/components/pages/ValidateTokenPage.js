@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { validateToken } from "../../actions/auth";
 import { Message } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { Wrapper } from "../pages/DashboardPage.js";
 
 const ValidateTokenPage = (props) => {
 	const [loading, setState] = useState({ loading: true });
@@ -24,16 +25,18 @@ const ValidateTokenPage = (props) => {
 	}, [props]);
 	return (
 		<>
-			{loading ? (
-				<Message success>Loading...</Message>
-			) : (
-				<>
-					<Message error>Invalid Token</Message>
-					<span style={{ margin: "10px" }}>
-						<Link to="/login">Go to login.</Link>
-					</span>
-				</>
-			)}
+			<Wrapper>
+				{loading ? (
+					<Message success>Loading...</Message>
+				) : (
+					<>
+						<Message error>Invalid Token</Message>
+						<span style={{ margin: "10px" }}>
+							<Link to="/login">Go to login.</Link>
+						</span>
+					</>
+				)}
+			</Wrapper>
 		</>
 	);
 };

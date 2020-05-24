@@ -5,53 +5,52 @@ import logo from "../../images/vyasakalogo.png";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth.js";
 import gravatarUrl from "gravatar-url";
-import "./NavBar.css";
 import styled from "styled-components";
 
-// <Image
-// 	style={{ width: "25px", position: "absolute", right: "15px" }}
-// 	src={gravatarUrl(user.email, { default: "retro" })}
-// />
+const MyNavBar = styled.div`
+	display: block;
+	position: fixed;
+	background: white;
+	color: black;
+	width: 80vw;
+`;
 
-const navbar = {
-	display: "block",
-	position: "fixed",
-	background: "white",
-	color: "black",
-	width: "80vw",
-};
+const NavMenu = styled.ul`
+	display: flex;
+	float: right;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
 
-const navMenu = {
-	display: "flex",
-	float: "right",
-	justifyContent: "space-around",
-	alignItems: "center",
-	listStyle: "none",
-};
+	li{
+		margin : 0 1em;
+	}
+`;
 
-	const Mybutton = styled.button`
-        background: transparent;
-        color: #1172c4;
-        font-size: 14px;
-        border-color: #1172c4;
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 22px;
-        padding: 10px 40px;
-        transition: all 0.2s linear;
+const Mybutton = styled.button`
+	background: transparent;
+	color: #1172c4;
+	font-size: 14px;
+	border-color: #1172c4;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 22px;
+	padding: 10px 40px;
+	transition: all 0.2s linear;
 
-    &:before {
-    content: "";
+	&:before {
+		content: "";
 		width: 40px;
 		height: 40px;
-		background:  ${props => props.avatar ? `url("${props.avatar}") no-repeat 50% 50%` : ""};
+		background: ${(props) =>
+			props.avatar ? `url("${props.avatar}") no-repeat 50% 50%` : ""};
 		display: inline-block;
 		position: absolute;
-		top:0;
+		top: 0;
 		left: -50px;
 		background-size: cover;
 		border-radius: 50%;
-  }
+	}
 `;
 
 const NavBar = ({ isAuthenticated, user, logout }) => {
@@ -61,15 +60,17 @@ const NavBar = ({ isAuthenticated, user, logout }) => {
 	}
 	return (
 		<>
-			<div style={navbar} className="navbar">
+			<MyNavBar>
 				<Link style={{ float: "left" }} className="logo" to="/">
 					<img src={logo} alt="logo" />
 				</Link>
-				<ul style={navMenu} className="nav-menu">
+				<NavMenu>
 					<li style={{ position: "relative" }}>
 						{isAuthenticated ? (
 							<>
-								<Mybutton avatar={avatar} onClick={() => logout()}>Logout</Mybutton>
+								<Mybutton avatar={avatar} onClick={() => logout()}>
+									Logout
+								</Mybutton>
 							</>
 						) : (
 							<Link to="/login">Login</Link>
@@ -79,8 +80,8 @@ const NavBar = ({ isAuthenticated, user, logout }) => {
 					<li>
 						<Link to="/dashboard">Dashboard</Link>
 					</li>
-				</ul>
-			</div>
+				</NavMenu>
+			</MyNavBar>
 		</>
 	);
 };

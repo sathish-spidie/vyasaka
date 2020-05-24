@@ -3,6 +3,7 @@ import { Message } from "semantic-ui-react";
 import ForgotPasswordForm from "../forms/ForgotPasswordForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Wrapper } from "../pages/DashboardPage.js";
 import { forgotPasswordRequest } from "../../actions/auth";
 
 class ForgotPasswordPage extends React.Component {
@@ -21,18 +22,30 @@ class ForgotPasswordPage extends React.Component {
 			.forgotPasswordRequest(data)
 			.then(() => this.setState({ loading: false, success: true }))
 			.catch((err) =>
-				this.setState({ loading: false, errors: err.response.data.errors })
+				this.setState({
+					loading: false,
+					errors: err.response.data.errors,
+				})
 			);
 	};
 
 	render() {
 		return (
 			<>
-				{this.state.loading  ||  this.state.success ? (
-					<Message loading={this.state.loading}>loading...</Message>
-				) : (
-					<ForgotPasswordForm errors={this.state.errors} submit={this.submit} />
-				)}
+				<Wrapper>
+					{this.state.loading ? (
+						<Message loading={this.state.loading}>loading...</Message>
+					) : this.state.success ? (
+						<Message success={this.state.success}>
+							Email sent successfuly check your email and click the link.
+						</Message>
+					) : (
+						<ForgotPasswordForm
+							errors={this.state.errors}
+							submit={this.submit}
+						/>
+					)}
+				</Wrapper>
 			</>
 		);
 	}

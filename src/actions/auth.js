@@ -35,8 +35,8 @@ export const confirm = (token) => (dispatch) =>
 export const forgotPasswordRequest = ({ email }) => () =>
 	api.user.forgotPasswordRequest(email);
 
-export const validateToken = (url) => (dispatch) =>
-	api.user.validateToken(url).then((res) => {
+export const validateToken = (token) => (dispatch) =>
+	api.user.validateToken(token).then((res) => {
 		localStorage.validateJWT = res.data.user.validateToken;
 	});
 

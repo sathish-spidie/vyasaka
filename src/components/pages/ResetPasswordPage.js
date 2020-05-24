@@ -2,6 +2,7 @@ import React from "react";
 import ResetPasswordForm from "../forms/ResetPasswordForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Wrapper } from "../pages/DashboardPage.js";
 import { resetPassword } from "../../actions/auth";
 
 class ResetPasswordPage extends React.Component {
@@ -24,10 +25,12 @@ class ResetPasswordPage extends React.Component {
 	render() {
 		return (
 			<>
+			<Wrapper>
 				<ResetPasswordForm
 					errors={this.state.errors}
 					submit={this.submit}
 				/>
+			</Wrapper>
 			</>
 		);
 	}

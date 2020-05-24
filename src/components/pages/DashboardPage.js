@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ConfirmEmailMessage from "../messages/ConfirmEmailMessage";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
 	position: absolute;
 	display: block;
 	width: 80vw;
